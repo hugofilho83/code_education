@@ -1,0 +1,16 @@
+FROM golang:1.16.6 as builder
+
+WORKDIR /go/src/app
+
+COPY . .
+
+RUN go mod init htaf.com.be/app
+RUN go get -d -v ./...
+RUN go install -v ./...
+
+
+FROM alpine
+
+COPY --from=builder /go/bin / 
+
+CMD ["/app"]
