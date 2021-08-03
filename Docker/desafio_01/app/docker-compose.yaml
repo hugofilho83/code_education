@@ -1,10 +1,9 @@
 version: '3'
 
 services: 
-    golang:
-        build: 
-            context: .
+    golang:        
         container_name: my-app-golang
+        image: htaf83/codeeducation
         
 
 
