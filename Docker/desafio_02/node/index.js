@@ -11,7 +11,10 @@ const config = {
 const mysql = require('mysql')
 const connection = mysql.createConnection(config)
 
-const sql = `INSERT INTO people (name) VALUES ('hugo tavares')`
+const create_table = `CREATE TABLE people (id integer auto_increment primary key, name varchar(255) not null);`
+connection.query(create_table)
+
+const sql = `INSERT INTO people (name) VALUES ('Hugo Tavares')`
 connection.query(sql)
 
 app.get('/', (req, res)=>{
@@ -22,9 +25,6 @@ app.get('/', (req, res)=>{
             res.json(error);
         else
             res.json(result);
-
-        connection.end();
-
     });
     
 })
