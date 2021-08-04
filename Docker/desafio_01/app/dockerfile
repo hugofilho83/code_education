@@ -9,7 +9,7 @@ RUN go get -d -v ./...
 RUN go install -v ./...
 
 
-FROM busybox:uclibc
+FROM scratch
 
 COPY --from=builder /go/bin / 
 
