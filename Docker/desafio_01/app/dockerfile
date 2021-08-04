@@ -9,7 +9,7 @@ RUN go get -d -v ./...
 RUN go install -v ./...
 
 
-FROM alpine
+FROM busybox:uclibc
 
 COPY --from=builder /go/bin / 
 
