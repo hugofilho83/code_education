@@ -1,0 +1,19 @@
+name: ci-golang-workflow
+on: [push]
+jobs:
+    check-application:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Go
+              uses: actions/setup-go@v2
+              with:
+                  go-version: '1.24.0' # Specify the Go version you want to use
+
+            - name: Install dependencies
+              run: go mod download
+
+            - name: Run tests
+              run: go test -v ./... # Added verbose flag for detailed test output
